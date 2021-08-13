@@ -1,7 +1,7 @@
 ---
 date: '2021-08-12T11:00:18.061Z'
 draft: false
-title: JPA - N+1 쿼리
+title: n1query
 ---
 > Kotlin, Spring Boot 2
 - ## N+1 Query?
@@ -82,7 +82,7 @@ Hibernate:
 
 - #### 이유?
 jpaRepository내 에서 사용하는 JPQL은 엔티티와 필드이름만을 가지고 쿼리를 실행하도록 추상화 되어 있다. \
-즉 [select * from entity] 만을 실행하기 때문에 연관관계인 엔티티가 필요할 경우엔 [select * from (entity)]로 호출해온다 \
+즉 [select * from entity] 만을 실행하기 때문에 연관관계인 엔티티가 필요할 경우에도 [select * from (entity)]로 호출해온다 \
 (호출하는 시점은 FetchType.LAZY, EAGER에 따라 사용하는시점, 쿼리를 호출한 시점으로 나뉜다.) \
 (OneToMany의 경우 default는 LAZY이지만 코드에서 member를 호출하는 내용을 추가하였다)
 
