@@ -1,0 +1,24 @@
+{{ define "main" }}
+<article class="markdown">
+  <h1>
+    <a href="{{ .RelPermalink }}">{{ partial "docs/title.html" . }}</a>
+  </h1>
+  {{ partial "docs/post-meta" . }}
+  {{- .Content -}}
+
+  <script src="https://utteranc.es/client.js"
+          repo="harrycjy1/harrycjy1.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+</article>
+
+
+
+{{ end }}
+
+{{ define "toc" }}
+{{ partial "docs/toc" . }}
+{{ end }}

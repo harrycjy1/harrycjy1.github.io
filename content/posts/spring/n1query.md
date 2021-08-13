@@ -1,7 +1,7 @@
 ---
 date: '2021-08-12T11:00:18.061Z'
 draft: false
-title: n1query
+title: JPA - N+1 쿼리
 ---
 > Kotlin, Spring Boot 2
 - ## N+1 Query?

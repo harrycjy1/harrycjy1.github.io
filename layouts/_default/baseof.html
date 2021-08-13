@@ -4,13 +4,6 @@
     {{ partial "docs/html-head" . }}
     {{ partial "docs/inject/head" . }}
 </head>
-<script src="https://utteranc.es/client.js"
-        repo="harrycjy1/harrycjy1.github.io"
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
 <body dir="{{ .Site.Language.LanguageDirection | default "ltr" }}">
 <input type="checkbox" class="hidden toggle" id="menu-control" />
 <input type="checkbox" class="hidden toggle" id="toc-control" />
