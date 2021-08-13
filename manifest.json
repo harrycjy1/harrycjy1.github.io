@@ -1,6 +1,6 @@
 {
-  "name": "Joey's 생존일지",
-  "short_name": "Joey's 생존일지",
+  "name": "Joey's 개발 생존일지",
+  "short_name": "Joey's 개발 생존일지",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
