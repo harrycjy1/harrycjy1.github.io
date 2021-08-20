@@ -2,15 +2,17 @@
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="Kotlin, Spring Boot 2
-   N+1 Query? #    연관관계가 설정 되어있는 엔티티를 조회할 때 나오는 문제로써
+<meta name=description content="n1query #   Kotlin, Spring Boot 2
+  N+1 Query?
+연관관계가 설정 되어있는 엔티티를 조회할 때 나오는 문제로써 \
 조회된 엔티티의 개수 만큼(n) 엮여 있는 엔티티를 추가로 조회해오는 문제
-Example #   OneToMany로 연관관계가 맺어진 Team, Member Entity DB에는 3개의 Team이 존재하고 각각 6명의 Member를 가지고 있는상태  @Entity class Team( @Id @GeneratedValue val id: Long = 0, @OneToMany( mappedBy = &#34;team&#34;, orphanRemoval = true, cascade = [CascadeType.">
+   Example #   OneToMany로 연관관계가 맺어진 Team, Member Entity DB에는 3개의 Team이 존재하고 각각 6명의 Member를 가지고 있는상태  @Entity class Team( @Id @GeneratedValue val id: Long = 0, @OneToMany( mappedBy = &#34;team&#34;, orphanRemoval = true, cascade = [CascadeType.">
 <meta name=theme-color content="#FFFFFF"><meta property="og:title" content="JPA - N+1 쿼리">
-<meta property="og:description" content="Kotlin, Spring Boot 2
-   N+1 Query? #    연관관계가 설정 되어있는 엔티티를 조회할 때 나오는 문제로써
+<meta property="og:description" content="n1query #   Kotlin, Spring Boot 2
+  N+1 Query?
+연관관계가 설정 되어있는 엔티티를 조회할 때 나오는 문제로써 \
 조회된 엔티티의 개수 만큼(n) 엮여 있는 엔티티를 추가로 조회해오는 문제
-Example #   OneToMany로 연관관계가 맺어진 Team, Member Entity DB에는 3개의 Team이 존재하고 각각 6명의 Member를 가지고 있는상태  @Entity class Team( @Id @GeneratedValue val id: Long = 0, @OneToMany( mappedBy = &#34;team&#34;, orphanRemoval = true, cascade = [CascadeType.">
+   Example #   OneToMany로 연관관계가 맺어진 Team, Member Entity DB에는 3개의 Team이 존재하고 각각 6명의 Member를 가지고 있는상태  @Entity class Team( @Id @GeneratedValue val id: Long = 0, @OneToMany( mappedBy = &#34;team&#34;, orphanRemoval = true, cascade = [CascadeType.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://example.org/posts/spring/n1query/"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2021-08-12T11:00:18+00:00">
@@ -20,7 +22,7 @@ Example #   OneToMany로 연관관계가 맺어진 Team, Member Entity DB에는 
 <link rel=icon href=/favicon.png type=image/x-icon>
 <link rel=stylesheet href=/book.min.958cea7827621d6fbcb3acf091344c3e44e3d2a9428f9c3c38bb9eb37bf8c45d.css integrity="sha256-lYzqeCdiHW+8s6zwkTRMPkTj0qlCj5w8OLues3v4xF0=" crossorigin=anonymous>
 <script defer src=/flexsearch.min.js></script>
-<script defer src=/en.search.min.ed9ac08e77912b7a3914178b98bdd7f3f460f0f06518134176a61aee02b520a1.js integrity="sha256-7ZrAjneRK3o5FBeLmL3X8/Rg8PBlGBNBdqYa7gK1IKE=" crossorigin=anonymous></script>
+<script defer src=/en.search.min.989b91de1a8ec9b072d46592a130ae714e4fdc5f74024c40a41f708914b457b3.js integrity="sha256-mJuR3hqOybBy1GWSoTCucU5P3F90AkxApB9wiRS0V7M=" crossorigin=anonymous></script>
 </head>
 <body dir=ltr>
 <input type=checkbox class="hidden toggle" id=menu-control>
@@ -38,13 +40,6 @@ Example #   OneToMany로 연관관계가 맺어진 Team, Member Entity DB에는 
 <div class="book-search-spinner hidden"></div>
 <ul id=book-search-results></ul>
 </div>
-<ul>
-<li>
-<a href=/posts/spring/>
-Spring
-</a>
-</li>
-</ul>
 </nav>
 <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 </div>
@@ -63,7 +58,7 @@ Spring
 <aside class="hidden clearfix">
 <nav id=TableOfContents>
 <ul>
-<li><a href=#n1-query>N+1 Query?</a>
+<li>
 <ul>
 <li><a href=#example>Example</a></li>
 </ul>
@@ -77,19 +72,20 @@ Spring
 <a href=/posts/spring/n1query/>JPA - N+1 쿼리</a>
 </h1>
 <h5>August 12, 2021</h5>
+<h1 id=n1query>
+n1query
+<a class=anchor href=#n1query>#</a>
+</h1>
 <blockquote>
 <p>Kotlin, Spring Boot 2</p>
-</blockquote>
 <ul>
 <li>
-<h2 id=n1-query>
-N+1 Query?
-<a class=anchor href=#n1-query>#</a>
-</h2>
+<p><strong>N+1 Query?</strong></p>
+<p>연관관계가 설정 되어있는 엔티티를 조회할 때 나오는 문제로써 \</p>
+<p>조회된 엔티티의 개수 만큼(n) 엮여 있는 엔티티를 추가로 조회해오는 문제</p>
 </li>
 </ul>
-<p>연관관계가 설정 되어있는 엔티티를 조회할 때 나오는 문제로써<br>
-조회된 엔티티의 개수 만큼(n) 엮여 있는 엔티티를 추가로 조회해오는 문제</p>
+</blockquote>
 <h3 id=example>
 Example
 <a class=anchor href=#example>#</a>
@@ -122,7 +118,7 @@ Example
     <span style=color:#66d9ef>val</span> team: Team
 )
 </code></pre></div><p>Team을 모두 조회하는 쿼리를 실행한 결과 (JpaRepository에서 제공하는 findAll() 사용)</p>
-<pre><code>Hibernate: 
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>Hibernate: 
     select
         team0_.id as id1_1_ 
     from
@@ -157,34 +153,23 @@ Hibernate:
         dev.member member0_ 
     where
         member0_.team_id=?
-</code></pre><p>로그를 보면 team을 조회하고 member를 조회하는 쿼리가 n번(조회된 team의 개수만큼(3번))<br>
-즉, join을 활용한다면 한번으로 충분할 조회 쿼리가 3번이나 더 날아가고 있는걸 확인 할 수 있다.</p>
+</code></pre></div><p>로그를 보면 team을 조회하고 member를 조회하는 쿼리가 n번(조회된 team의 개수만큼(3번)) 즉, join을 활용한다면 한번으로 충분할 조회 쿼리가 3번이나 더 날아가고 있는걸 확인 할 수 있다.</p>
 <ul>
 <li>
-<h4 id=이유>
-이유?
-<a class=anchor href=#%ec%9d%b4%ec%9c%a0>#</a>
-</h4>
+<p><strong>이유?</strong></p>
+<p>jpaRepository내 에서 사용하는 JPQL은 엔티티와 필드이름만을 가지고 쿼리를 실행하도록 추상화 되어 있다. \</p>
+<p>즉 [select <em>from entity] 만을 실행하기 때문에 연관관계인 엔티티가 필요할 경우에도 [select</em> from (entity)]로 호출해온다 \</p>
+<p>(호출하는 시점은 FetchType.LAZY, EAGER에 따라 사용하는시점, 쿼리를 호출한 시점으로 나뉜다.) \</p>
+<p>(OneToMany의 경우 default는 LAZY이지만 코드에서 member를 호출하는 내용을 추가하였다)</p>
 </li>
 </ul>
-<p>jpaRepository내 에서 사용하는 JPQL은 엔티티와 필드이름만을 가지고 쿼리를 실행하도록 추상화 되어 있다.<br>
-즉 [select * from entity] 만을 실행하기 때문에 연관관계인 엔티티가 필요할 경우에도 [select * from (entity)]로 호출해온다<br>
-(호출하는 시점은 FetchType.LAZY, EAGER에 따라 사용하는시점, 쿼리를 호출한 시점으로 나뉜다.)<br>
-(OneToMany의 경우 default는 LAZY이지만 코드에서 member를 호출하는 내용을 추가하였다)</p>
 <blockquote>
 <p>결국 조회하는 Team의 개수가 늘어날때, 연관관계가 추가될때 마다 실행하는 쿼리의 수가 기하급수적으로 늘어날 수 있다.</p>
 </blockquote>
 <ul>
-<li>
-<h4 id=해결방법>
-해결방법
-<a class=anchor href=#%ed%95%b4%ea%b2%b0%eb%b0%a9%eb%b2%95>#</a>
-</h4>
-</li>
-</ul>
-<ol>
+<li><strong>해결방법</strong></li>
 <li>Fetch Join을 사용한다. JPQL에서 제공하는 join fetch를 사용하면 쿼리를 최적화 할 수 있다.</li>
-</ol>
+</ul>
 <p>(Query 작성은 Querydsl을 사용하였다.)</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin>    <span style=color:#66d9ef>override</span> <span style=color:#66d9ef>fun</span> <span style=color:#a6e22e>solveN1QueryProblem</span>(): MutableList&lt;Team&gt; {
         <span style=color:#66d9ef>return</span> jpaQueryFactory.selectDistinct(team)
@@ -192,10 +177,8 @@ Hibernate:
             .leftJoin(team.member, member).fetchJoin()
             .fetch()
     }
-    
-     
 </code></pre></div><p>fetch join 쿼리를 실행한 결과</p>
-<pre><code>Hibernate: 
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>Hibernate: 
     select
         team0_.id as id1_2_0_,
         member1_.id as id1_1_1_,
@@ -207,11 +190,9 @@ Hibernate:
     left outer join
         dev.member member1_ 
             on team0_.id=member1_.team_id
-</code></pre><p>조인을 통해 1번의 쿼리만이 실행된걸 알 수 있다 😁</p>
+</code></pre></div><p>조인을 통해 1번의 쿼리만이 실행된걸 알 수 있다 😁</p>
 <blockquote>
-<p>select distinct를 사용한 이유
-: distinct를 제외하고 select 쿼리를 실행시킨 결과를 찍어보면 총 18개(3 * 6)의 team이 리턴되는데<br>
-이는 join fetch는 Cartesian product(카테시안 곱)이 발생하여 member의 수만큼 team이 복사되기 때문이다. \</p>
+<p>select distinct를 사용한 이유 : distinct를 제외하고 select 쿼리를 실행시킨 결과를 찍어보면 총 18개(3 * 6)의 team이 리턴되는데 이는 join fetch는 Cartesian product(카테시안 곱)이 발생하여 member의 수만큼 team이 복사되기 때문이다. \</p>
 <ul>
 <li>Cartesian Product Link: <a href=https://byul91oh.tistory.com/26>https://byul91oh.tistory.com/26</a></li>
 </ul>
@@ -231,7 +212,7 @@ Hibernate:
 <div class=book-toc-content>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#n1-query>N+1 Query?</a>
+<li>
 <ul>
 <li><a href=#example>Example</a></li>
 </ul>
